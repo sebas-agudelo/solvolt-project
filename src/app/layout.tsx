@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
+// @ts-expect-error Next.js loads global CSS as a side effect; no module declaration is required.
 import "./globals.css";
+import { Nav } from "./components/Nav/Nav";
+import { NavBar } from "@/components/Nav/NavBar";
+import Footer from "../components/sections/Footer/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+const geistMono = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  // weight: ['400', '700'],
+
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={` ${geistMono.className} antialiased`}
+        >
+        <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );

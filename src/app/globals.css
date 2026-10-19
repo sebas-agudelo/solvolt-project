@@ -1,21 +1,52 @@
 @import "tailwindcss";
 
+@utility smooth {
+  transition-property: all;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --text-primary: var(--color-neutral-700);
+  --heading-weight: var(--font-weight-semibold);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+  h2 {
+    font-weight: var(--heading-weight);
+    color: var(--text-primary);
+    text-wrap: pretty;
+  }
+
+  h3 {
+    font-weight: var(--heading-weight);
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-primary);
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@utility paragraph {
+  text-wrap: pretty;
+  line-height: 1.625;
+  white-space: pre-line;
+}
+
+@utility heading-lg {
+  font-size: var(--text-3xl);
+
+  @variant lg {
+    font-size: var(--text-5xl);
+  }
+}
+
+@utility heading-md {
+  font-size: var(--text-2xl);
+
+  @variant lg {
+    font-size: var(--text-4xl);
   }
 }
 
@@ -23,4 +54,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* max-width: 1600px; */
+  margin: auto;
 }
