@@ -10,7 +10,7 @@ interface ContactDetailItemProps {
 
 export const ContactDetailItem = ({ href, title, text, icon }: ContactDetailItemProps) => {
     return (
-        <div className="flex flex-col gap-2 mb-8 last:mb-0">
+        <div className="flex flex-col gap-2 ">
             <h3 className='text-neutral-800 font-[600] flex items-center gap-2'>{icon} {title}</h3>
             {href && href ?
                 <Link href={href} className='flex items-center gap-2 lg:hover:text-amber-300 lg:hover:underline transition-all duration-150'>{text}</Link> :

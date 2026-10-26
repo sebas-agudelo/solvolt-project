@@ -1,7 +1,7 @@
 import servicesQuery from "@/sanity/servicesQuery";
 import { Servicess } from "@/app/services/Services";
 import { Hero } from "@/components/sections/Hero";
-import siteSettingsQuery from "@/sanity/siteSettingsQuery";
+// import siteSettingsQuery from "@/sanity/siteSettingsQuery";
 import { CtaSection } from "@/components/sections/CtaSection";
 
 export default async function Services() {

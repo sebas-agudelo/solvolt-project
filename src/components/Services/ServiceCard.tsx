@@ -1,6 +1,7 @@
+import { Services } from "@/sanity/types";
 import { IoArrowForwardOutline } from "react-icons/io5";
 
-export const ServiceCard = ({ service }: any) => {
+export const ServiceCard = ({ service }: { service: Services }) => {
     return (
         <div className="group flex items-center justify-between gap-2 rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition hover:shadow-md md:flex-col md:items-start md:justify-start cursor-pointer">
             <h3 className="text-base font-semibold text-cyan-950 transition-colors group-hover:text-cyan-700">

@@ -1,19 +1,17 @@
-
-import { Index } from "./components/ContactComponents/Index";
 import { Benefits } from "@/components/sections/Benefits/Benefits";
-import { ReferensProjects } from "@/app/_home/ReferensProjects";
+import { ReferensProjects } from "@/app/_home/components/ReferensProjects";
 import { FAQ } from "../components/sections/FAQ/FAQ";
 import { Hero } from "@/components/sections/Hero";
-import { ContactQuery } from "@/sanity/ContactQuery";
 import getHomeData from "@/sanity/homeQuery";
-import getSiteSettings from "@/sanity/siteSettingsQuery";
-import { Services } from "./_home/Services";
-import { ReviewsSection } from "@/components/sections/ReviewsSection";
+
+import { Services } from "./_home/components/Services";
+import { getSiteSettings } from "@/sanity/siteSettingsQuery";
+import { Contact } from "@/components/sections/Contact/Contact";
+
 
 export default async function Home() {
   const home = await getHomeData()
   const siteSettings = await getSiteSettings()
-  const contactContent = await ContactQuery()
 
   return (
     <div className="relative">
@@ -27,22 +25,27 @@ export default async function Home() {
         homeServices={home?.homeServices}
       />
 
-      <Benefits />
+      {
+        siteSettings?.benefits?.benefits_array && siteSettings?.benefits?.benefits_array?.length > 0 && (
+          <Benefits />
+        )
+      }
 
-      <ReferensProjects
-        referensProject={home?.homeProject}
-      />
+      {
+        home?.homeProject?.projects && (
+          <ReferensProjects
+            homeProject={home?.homeProject}
+          />
+        )
+      }
 
-      <ReviewsSection />
-      
       <FAQ />
 
-
-      <Index
-        content={contactContent}
-        siteSettings={siteSettings}
-
+      <Contact
+        contact={siteSettings?.contact}
+        openHours={siteSettings?.company?.openHours}
       />
+
     </div>
   );
 }

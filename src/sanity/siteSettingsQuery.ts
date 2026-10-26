@@ -1,23 +1,15 @@
+import { defineQuery } from "next-sanity";
 import { client } from "./client";
 
-export default async function getSiteSettings() {
-  const SITESETTIGS_QUERY = `
-    *[_type == "siteSettings"][0]
-  `;
-  const siteSettigs = await client.fetch(SITESETTIGS_QUERY);
-  return siteSettigs;
+
+const SITESETTIGS_QUERY = defineQuery(` *[_type == "siteSettings"][0]`);
+export const getSiteSettings = async () => {
+  return await client.fetch(SITESETTIGS_QUERY)
 }
 
-export async function getFaqData() {
-  const FAQ_QUERY = `
-    *[_type == "faq"][0]{
-      heading,
-      paragraht,
-      faqFields
-    }
-  `;
-  const faq = await client.fetch(FAQ_QUERY);
-  return faq;
+const FAQ_QURY = defineQuery(`*[_type == "faq"][0]`);
+export const getFaqData = async () => {
+  return await client.fetch(FAQ_QURY)
 }
 
 export async function getAboutData() {

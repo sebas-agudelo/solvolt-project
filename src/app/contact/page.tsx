@@ -15,7 +15,7 @@ export default async function Contact() {
             {/* <h1>Kontakta oss</h1> */}
             <Hero h={80}/>
 
-            <Index contact={contact}/>
+            {/* <Index contact={contact}/> */}
             <Footer />
         </div>
     )

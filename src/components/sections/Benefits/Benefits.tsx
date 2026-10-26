@@ -1,12 +1,9 @@
-import { DownCurveShape, UpCurveShape } from "@/components/UI/Shapes/Shapes"
-import siteSettingsQuery from "@/sanity/siteSettingsQuery"
-import { Section } from "../Section"
-import { BenefitList } from "./BenefitList"
+import { DownCurveShape } from "@/components/UI/Shapes/Shapes"
 import { SectionWrapper } from "../SectionWrapper"
+import { getSiteSettings } from "@/sanity/siteSettingsQuery"
 
 export const Benefits = async () => {
-    const settings = await siteSettingsQuery()
-    // bg-cyan-950
+    const settings = await getSiteSettings();
     return (
         <SectionWrapper wrapperClass="bg-cyan-950">
             <div className="flex flex-col gap-10 md:items-center text-white">
@@ -14,10 +11,23 @@ export const Benefits = async () => {
                     {settings?.benefits?.heading}
                 </h2>
 
-                <BenefitList settings={settings} />
+                <ul className="flex flex-col md:flex-row gap-12 lg:gap-24">
+                    {
+                        settings?.benefits?.benefits_array?.map((benefit) => (
+                            <li
+                                key={benefit?.benefit_title}
+                                className="flex flex-col gap-2 md:w-1/3">
+                                <div className="flex flex-col gap-4">
+                                    <h3 className="text-xl text-white">{benefit.benefit_title}</h3>
+                                </div>
+                                <p className="paragraph text-white/90">{benefit?.benefit_description}</p>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
 
-            <DownCurveShape color="#E5E5E5" />
+            <DownCurveShape color="#1e475a" />
         </SectionWrapper>
     )
 }
