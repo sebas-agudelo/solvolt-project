@@ -12,9 +12,10 @@ type referensProjectProps = {
 export const ReferensProjects = ({ homeProject }: referensProjectProps) => {
     // log
     return (
-        <SectionWrapper wrapperClass="bg-cyan-950/90" label="Referensprojekt" labelColor="text-white">
+        <SectionWrapper wrapperClass="bg-cyan-950/90" label={homeProject?.label} labelColor="text-white">
+            <DownCurveShape color="#1e475a" />
             <h2 className="heading-lg text-balance mb-6 md:mb-10 text-white">
-                {homeProject?.heading}
+                {homeProject?.title}
             </h2>
 
             <div className="flex flex-col md:flex-row gap-5 md:gap-8 items-stretch">
@@ -54,15 +55,11 @@ export const ReferensProjects = ({ homeProject }: referensProjectProps) => {
                             )}
                     </div>
 
-                    {
-                        homeProject?.primaryButton &&
-                        <SecondaryButton color="bg-cyan-950 text-white" href="/projects" text={homeProject?.primaryButton} />
-                    }
-
+            
+                        <SecondaryButton color="bg-cyan-950 text-white" href="/projects" text={"Läs mer"} />
                 </div>
             </div>
 
-            <DownCurveShape color="#fff" />
         </SectionWrapper>
     )
 }

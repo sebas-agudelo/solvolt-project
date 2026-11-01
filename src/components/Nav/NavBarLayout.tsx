@@ -24,8 +24,8 @@ export const NavBarLayout = () => {
     return (
         <div
             className={`px-3 md:px-6 flex justify-between items-center fixed left-1/2 -translate-x-1/2 z-10 transition-all duration-300 ${scrolled
-                    ? "w-[88%] h-[56px] top-3 md:w-[95%] md:h-[60px] md:top-4 max-w-[950px] rounded-3xl bg-white text-cyan-950 shadow-xl"
-                    : "w-[95%] h-[70px] top-5 max-w-[1440px] rounded-xl bg-transparent text-white"
+                ? "w-[88%] h-[56px] top-3 md:w-[95%] md:h-[60px] md:top-4 max-w-[950px] rounded-3xl bg-white text-cyan-950 shadow-xl"
+                : "w-[95%] h-[70px] top-5 max-w-[1440px] rounded-xl bg-transparent text-white"
                 }`}
         >
             <div>
@@ -55,14 +55,15 @@ export const NavBarLayout = () => {
                 </button>
 
                 <ul
-                    className={`hidden md:flex gap-8 transition-all duration-300 ${
-                        scrolled ? "font-[500]" : "font-normal"
-                    }`}
+                    className={`hidden md:flex gap-8 transition-all duration-300 ${scrolled ? "font-[500]" : "font-normal"
+                        }`}
                 >
                     <li className={desktopLinkClass}>
                         <Link href="/services">Tjänster</Link>
                     </li>
-                    <li className={desktopLinkClass}>Om oss</li>
+                    <li className={desktopLinkClass}>
+                        <Link href="/about">Om oss</Link>
+                    </li>
                     <li className={desktopLinkClass}>Kundservice</li>
                     <li className={desktopLinkClass}>Nyheter</li>
                 </ul>

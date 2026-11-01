@@ -42,8 +42,6 @@ export const Contact = ({ contact, openHours }: contactProps) => {
                 </div>
 
             </div>
-            <DownCurveShape color="#053345" />
-
         </SectionWrapper>
     )
 }

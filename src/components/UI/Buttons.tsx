@@ -6,7 +6,7 @@ import {
 
 interface IButtonProps {
     href?: string,
-    text: string,
+    text?: string,
     color?: string
 }
 

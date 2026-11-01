@@ -1,6 +1,5 @@
 import { Links } from "@/components/UI/Link";
 import { DownCurveShape } from "@/components/UI/Shapes/Shapes";
-import { IHomeServices } from "@/models/IHome";
 import { ServicesList } from "@/components/Services/ServicesList";
 import { SectionWrapper } from "@/components/sections/SectionWrapper";
 import { HOME_DATA_RESULT } from "@/sanity/types";
@@ -10,10 +9,9 @@ type homeServicesProps = {
 }
 
 export const Services = ({ homeServices }: homeServicesProps) => {
-    console.log("All home services: ",homeServices?.services);
-    
     return (
         <SectionWrapper label="Favorittjänster">
+            <DownCurveShape color="#fff" />
             <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-8">
                 <div className="w-full lg:w-[50%] flex flex-col justify-between gap-8">
                     <div className="flex flex-col gap-2">
@@ -32,38 +30,34 @@ export const Services = ({ homeServices }: homeServicesProps) => {
                         {
                             homeServices?.usps?.map((adv, index) => (
                                 <li
-                                key={index}
-                                className="text-cyan-950 font-medium list-disc">{adv}</li>
+                                    key={index}
+                                    className="text-cyan-950 font-medium list-disc">{adv}</li>
                             ))
                         }
                     </ul>
 
+                    <div className="hidden md:block mt-4">
+                        <Links
+                            href="/services"
+                            text={"Våra tjänster"}
+                        />
+                    </div>
 
-                    {homeServices?.primaryButton && (
-                        <div className="hidden md:block mt-4">
-                            <Links
-                                href="/services"
-                                text={homeServices?.primaryButton}
-                            />
-                        </div>
-                    )}
                 </div>
 
 
                 <div className="w-full lg:w-[50%] flex flex-col justify-start">
-                    <ServicesList data={homeServices?.services} columns={2} />
+                    <ServicesList servives={homeServices?.services} columns={2} />
                 </div>
 
             </div>
-            {homeServices?.primaryButton && (
-                <div className="md:hidden mt-8">
-                    <Links
-                        href="/services"
-                        text={homeServices?.primaryButton}
-                    />
-                </div>
-            )}
-            <DownCurveShape color="#053345" />
+            <div className="md:hidden mt-8">
+                <Links
+                    href="/services"
+                    text={"Våra tjänster"}
+                />
+            </div>
+
         </SectionWrapper>
 
 

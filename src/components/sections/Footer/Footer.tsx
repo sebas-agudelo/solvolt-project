@@ -8,6 +8,8 @@ import {
     FaLocationDot,
     FaArrowUpRightFromSquare,
 } from "react-icons/fa6";
+import { SectionWrapper } from "../SectionWrapper";
+import { DownCurveShape } from "@/components/UI/Shapes/Shapes";
 
 const services = [
     { label: "Elinstallationer", href: "/services/elinstallationer" },
@@ -26,8 +28,9 @@ const companyLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-cyan-950 text-white">
-            <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 lg:px-12 lg:py-16">
+        <SectionWrapper wrapperClass="bg-cyan-950">
+            <DownCurveShape color="#053345"/>
+            <div className="">
 
                 {/* Main footer */}
                 <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
@@ -221,6 +224,6 @@ export default function Footer() {
                     </p>
                 </div>
             </div>
-        </footer>
+    </SectionWrapper>
     );
 }

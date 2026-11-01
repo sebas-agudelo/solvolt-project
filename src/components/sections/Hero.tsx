@@ -4,8 +4,9 @@ import { DownCurveShape } from "@/components/UI/Shapes/Shapes"
 import { urlFor } from "@/lib/urlFor"
 import { PrimaryButton, SecondaryButton } from "../UI/Buttons"
 import { usePathname } from "next/navigation"
+import { Hero as HeroTypes } from "@/sanity/types"
 
-export const Hero = ({ data, h, telephone }: { data: any; h: number; telephone?: string }) => {
+export const Hero = ({ data, h, telephone }: { data?: HeroTypes | null; h: number; telephone?: string }) => {
     const path = usePathname();
 
     return (
@@ -16,10 +17,10 @@ export const Hero = ({ data, h, telephone }: { data: any; h: number; telephone?:
             {/* Bakgrundsbild med mjuk gradient överlägg för bra kontrast */}
             <div className="h-full w-full absolute inset-0 z-0">
                 {data?.image && (
-                    <img 
-                        className=" h-full w-full object-cover object-left opacity-25 scale-105 transition-transform duration-1000 ease-out" 
-                        src={urlFor(data?.image).url()} 
-                        alt={data?.heading || "Hero bakgrund"} 
+                    <img
+                        className=" h-full w-full object-cover object-left opacity-25 scale-105 transition-transform duration-1000 ease-out"
+                        src={urlFor(data?.image).url()}
+                        alt={data?.heading || "Hero bakgrund"}
                     />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-950 via-cyan-950/80 to-transparent" />
@@ -29,7 +30,7 @@ export const Hero = ({ data, h, telephone }: { data: any; h: number; telephone?:
             <div className="container mx-auto px-4 lg:px-12 z-10">
                 <div className="flex flex-col justify-between w-full max-w-[850px] gap-8">
                     <div className="flex flex-col gap-4">
-                        
+
                         {/* Rubrik och beskrivning */}
                         <div className="flex flex-col gap-4">
                             <h1 className="text-[42px] sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] tracking-tight text-balance">
@@ -44,15 +45,15 @@ export const Hero = ({ data, h, telephone }: { data: any; h: number; telephone?:
                     {/* Knapp-sektion: items-start gör att knapparna inte sträcks ut på mobil */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                         {data?.primaryButton && (
-                            <PrimaryButton 
-                                href={`tel:${telephone}`} 
-                                text={`${data?.primaryButton} ${telephone || ""}`} 
+                            <PrimaryButton
+                                href={`tel:${telephone}`}
+                                text={`${data?.primaryButton} ${telephone || ""}`}
                             />
                         )}
                         {data?.secondaryButton && (
-                            <SecondaryButton 
-                                href="/contact" 
-                                text={data?.secondaryButton} 
+                            <SecondaryButton
+                                href="/contact"
+                                text={data?.secondaryButton}
                             />
                         )}
                     </div>

@@ -15,6 +15,14 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type CtaSection = {
+  _type: "ctaSection";
+  title: string;
+  text?: string;
+  actionBtn1?: string;
+  actionBtn2?: string;
+};
+
 export type FaqItem = {
   _type: "faqItem";
   faq_item: string;
@@ -28,11 +36,11 @@ export type ProjectsReference = {
   [internalGroqTypeReferenceTo]?: "projects";
 };
 
-export type Home_project = {
-  _type: "home_project";
-  heading: string;
-  text?: string;
-  primaryButton?: string;
+export type ReferenceProject = {
+  _type: "referenceProject";
+  label?: string;
+  title: string;
+  description?: string;
   projects?: ProjectsReference;
 };
 
@@ -43,14 +51,13 @@ export type ServicesReference = {
   [internalGroqTypeReferenceTo]?: "services";
 };
 
-export type Home_services = {
-  _type: "home_services";
+export type HomeServices = {
+  _type: "homeServices";
   showCardsInRow?: boolean;
   heading: string;
   text?: string;
   usps?: Array<string>;
-  primaryButton?: string;
-  services?: Array<
+  services: Array<
     {
       _key: string;
     } & ServicesReference
@@ -64,9 +71,8 @@ export type Faq = {
   _updatedAt: string;
   _rev: string;
   faq_title: string;
-  description: string;
-  faq_button_text: string;
-  faqFields?: Array<
+  description?: string;
+  faqFields: Array<
     {
       _key: string;
     } & FaqItem
@@ -75,7 +81,7 @@ export type Faq = {
 
 export type Benefits = {
   _type: "benefits";
-  heading: string;
+  title: string;
   benefits_array?: Array<{
     benefit_title: string;
     benefit_icon?: IconPicker;
@@ -130,6 +136,7 @@ export type SiteSettings = {
   company?: Company;
   contact?: Contacts;
   benefits?: Benefits;
+  cta?: CtaSection;
 };
 
 export type IconPicker = {
@@ -155,19 +162,39 @@ export type SanityImageHotspot = {
   width: number;
 };
 
-export type EmployeeReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "Employee";
+export type EmployeesSection = {
+  _type: "employeesSection";
+  employees_label?: string;
+  employees_title?: string;
 };
 
-export type About = {
+export type AboutContent = {
+  _type: "aboutContent";
+  about_image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  about_title: string;
+  about_text: string;
+  about_link?: string;
+};
+
+export type About_page = {
   _id: string;
-  _type: "about";
+  _type: "about_page";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  about_hero?: Hero;
+  aboutSection?: AboutContent;
+  employeesSection?: EmployeesSection;
+};
+
+export type Hero = {
+  _type: "hero";
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -175,63 +202,11 @@ export type About = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  the_company?: Array<{
-    story_img?: {
-      asset?: SanityImageAssetReference;
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-    story_heading?: string;
-    story?: string;
-    _key: string;
-  }>;
-  employees?: Array<
-    {
-      _key: string;
-    } & EmployeeReference
-  >;
   heading?: string;
   description?: string;
   secondaryText?: string;
   primaryButton?: string;
   secondaryButton?: string;
-};
-
-export type Movie = {
-  _id: string;
-  _type: "movie";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  poster?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  directors?: Array<string>;
-};
-
-export type News = {
-  _id: string;
-  _type: "news";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  header?: string;
-  description?: string;
-  status?: string;
 };
 
 export type Projects = {
@@ -257,38 +232,10 @@ export type Projects = {
   };
 };
 
-export type ServicesProcess = {
-  _type: "servicesProcess";
-  heading?: string;
-  description?: string;
-  steps?: Array<{
-    heading?: string;
-    description?: string;
-    _key: string;
-  }>;
-  image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
-
-export type Hero = {
-  _type: "hero";
-  image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  heading?: string;
-  description?: string;
-  secondaryText?: string;
-  primaryButton?: string;
-  secondaryButton?: string;
+export type ServicesContent = {
+  _type: "servicesContent";
+  label?: string;
+  title?: string;
 };
 
 export type Services = {
@@ -297,11 +244,10 @@ export type Services = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  heading?: string;
+  service_title: string;
   slug?: Slug;
-  description?: string;
-  button?: string;
-  image?: {
+  service_description: string;
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -316,24 +262,24 @@ export type Slug = {
   source?: string;
 };
 
-export type Services_page = {
+export type ServicesPage = {
   _id: string;
-  _type: "services_page";
+  _type: "servicesPage";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   hero?: Hero;
-  process?: ServicesProcess;
+  services?: ServicesContent;
 };
 
-export type Employee = {
+export type Employees = {
   _id: string;
-  _type: "Employee";
+  _type: "employees";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  Fullname?: string;
-  Role?: string;
+  Fullname: string;
+  Role: string;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -350,8 +296,8 @@ export type Home_page = {
   _updatedAt: string;
   _rev: string;
   hero?: Hero;
-  homeServices?: Home_services;
-  homeProject?: Home_project;
+  homeServices?: HomeServices;
+  homeProject?: ReferenceProject;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -452,11 +398,12 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | CtaSection
   | FaqItem
   | ProjectsReference
-  | Home_project
+  | ReferenceProject
   | ServicesReference
-  | Home_services
+  | HomeServices
   | Faq
   | Benefits
   | Contacts
@@ -466,17 +413,16 @@ export type AllSanitySchemaTypes =
   | IconPicker
   | SanityImageCrop
   | SanityImageHotspot
-  | EmployeeReference
-  | About
-  | Movie
-  | News
-  | Projects
-  | ServicesProcess
+  | EmployeesSection
+  | AboutContent
+  | About_page
   | Hero
+  | Projects
+  | ServicesContent
   | Services
   | Slug
-  | Services_page
-  | Employee
+  | ServicesPage
+  | Employees
   | Home_page
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -498,36 +444,34 @@ export type HOME_DATA_RESULT = {
   _rev: string;
   hero?: Hero;
   homeServices: {
-    _type: "home_services";
+    _type: "homeServices";
     showCardsInRow?: boolean;
     heading: string;
     text?: string;
     usps?: Array<string>;
-    primaryButton?: string;
     services: Array<{
       _id: string;
       _type: "services";
       _createdAt: string;
       _updatedAt: string;
       _rev: string;
-      heading?: string;
+      service_title: string;
       slug?: Slug;
-      description?: string;
-      button?: string;
-      image?: {
+      service_description: string;
+      image: {
         asset?: SanityImageAssetReference;
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
       };
-    }> | null;
+    }>;
   } | null;
   homeProject: {
-    _type: "home_project";
-    heading: string;
-    text?: string;
-    primaryButton?: string;
+    _type: "referenceProject";
+    label?: string;
+    title: string;
+    description?: string;
     projects: {
       _id: string;
       _type: "projects";
@@ -553,6 +497,35 @@ export type HOME_DATA_RESULT = {
   } | null;
 } | null;
 
+// Source: ../my-app/src/sanity/servicesQuery.ts
+// Variable: SERVICES_QUERY
+// Query: *[_type == "services"]
+export type SERVICES_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "services";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  service_title: string;
+  slug?: Slug;
+  service_description: string;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+}>;
+
+// Source: ../my-app/src/sanity/servicesQuery.ts
+// Variable: SERVICEPAGE_QUERY
+// Query: *[_type == "servicesPage"][0]{hero, services}
+export type SERVICEPAGE_QUERY_RESULT = {
+  hero: Hero | null;
+  services: ServicesContent | null;
+} | null;
+
 // Source: ../my-app/src/sanity/siteSettingsQuery.ts
 // Variable: SITESETTIGS_QUERY
 // Query: *[_type == "siteSettings"][0]
@@ -565,6 +538,7 @@ export type SITESETTIGS_QUERY_RESULT = {
   company?: Company;
   contact?: Contacts;
   benefits?: Benefits;
+  cta?: CtaSection;
 } | null;
 
 // Source: ../my-app/src/sanity/siteSettingsQuery.ts
@@ -577,21 +551,58 @@ export type FAQ_QURY_RESULT = {
   _updatedAt: string;
   _rev: string;
   faq_title: string;
-  description: string;
-  faq_button_text: string;
-  faqFields?: Array<
+  description?: string;
+  faqFields: Array<
     {
       _key: string;
     } & FaqItem
   >;
 } | null;
 
+// Source: ../my-app/src/sanity/siteSettingsQuery.ts
+// Variable: ABOUT_QUERY
+// Query: *[_type == "about_page"][0]
+export type ABOUT_QUERY_RESULT = {
+  _id: string;
+  _type: "about_page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  about_hero?: Hero;
+  aboutSection?: AboutContent;
+  employeesSection?: EmployeesSection;
+} | null;
+
+// Source: ../my-app/src/sanity/siteSettingsQuery.ts
+// Variable: EMPLOYEES_QUERY
+// Query: *[_type == "employees"]
+export type EMPLOYEES_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "employees";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  Fullname: string;
+  Role: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '\n  *[_type == "home_page"][0]{\n    ...,\n    homeProject{..., projects->},\n    homeServices{..., services[]->}\n  }\n': HOME_DATA_RESULT;
+    '*[_type == "services"]': SERVICES_QUERY_RESULT;
+    ' *[_type == "servicesPage"][0]{hero, services}': SERVICEPAGE_QUERY_RESULT;
     ' *[_type == "siteSettings"][0]': SITESETTIGS_QUERY_RESULT;
     '*[_type == "faq"][0]': FAQ_QURY_RESULT;
+    '*[_type == "about_page"][0]': ABOUT_QUERY_RESULT;
+    '*[_type == "employees"]': EMPLOYEES_QUERY_RESULT;
   }
 }

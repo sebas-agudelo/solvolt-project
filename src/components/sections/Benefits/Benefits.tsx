@@ -6,9 +6,10 @@ export const Benefits = async () => {
     const settings = await getSiteSettings();
     return (
         <SectionWrapper wrapperClass="bg-cyan-950">
+            <DownCurveShape color="#053345" />
             <div className="flex flex-col gap-10 md:items-center text-white">
                 <h2 className="heading-lg text-white">
-                    {settings?.benefits?.heading}
+                    {settings?.benefits?.title}
                 </h2>
 
                 <ul className="flex flex-col md:flex-row gap-12 lg:gap-24">
@@ -26,8 +27,6 @@ export const Benefits = async () => {
                     }
                 </ul>
             </div>
-
-            <DownCurveShape color="#1e475a" />
         </SectionWrapper>
     )
 }
