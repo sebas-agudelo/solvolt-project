@@ -1,10 +1,9 @@
 import { Benefits } from "@/components/sections/Benefits/Benefits";
-import { ReferensProjects } from "@/app/_home/components/ReferensProjects";
+import { ReferensProjects } from "@/app/_home/ReferensProjects";
 import { FAQ } from "../components/sections/FAQ/FAQ";
 import { Hero } from "@/components/sections/Hero";
 import getHomeData from "@/sanity/homeQuery";
-
-import { Services } from "./_home/components/Services";
+import { Services } from "./_home/Services";
 import { getSiteSettings } from "@/sanity/siteSettingsQuery";
 import { Contact } from "@/components/sections/Contact/Contact";
 

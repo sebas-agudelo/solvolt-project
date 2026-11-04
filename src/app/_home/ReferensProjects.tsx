@@ -10,7 +10,6 @@ type referensProjectProps = {
 }
 
 export const ReferensProjects = ({ homeProject }: referensProjectProps) => {
-    // log
     return (
         <SectionWrapper wrapperClass="bg-cyan-950/90" label={homeProject?.label} labelColor="text-white">
             <DownCurveShape color="#1e475a" />

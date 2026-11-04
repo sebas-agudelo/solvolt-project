@@ -15,6 +15,95 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type Contact = {
+  _id: string;
+  _type: "contact";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  contact_title?: string;
+  contact_text?: string;
+  phone?: string;
+  email?: string;
+  city?: string;
+  address?: string;
+  zip?: string;
+  emergency_title?: string;
+  emergency_text?: string;
+  emergencyNumber?: string;
+};
+
+export type ServicesReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "services";
+};
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type Footer = {
+  _id: string;
+  _type: "footer";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  column1?: {
+    columnTitle?: string;
+    links?: Array<
+      {
+        _key: string;
+      } & ServicesReference
+    >;
+  };
+  column2?: {
+    columnTitle?: string;
+    links?: Array<{
+      label?: "phone" | "email" | "city" | "address" | "zip";
+      _type: "link";
+      _key: string;
+    }>;
+  };
+  column3?: {
+    columnTitle?: string;
+    links?: Array<{
+      label?: "about" | "contact" | "services";
+      _type: "link";
+      _key: string;
+    }>;
+  };
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  footer_text?: string;
+  trustText?: string;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+};
+
 export type CtaSection = {
   _type: "ctaSection";
   title: string;
@@ -42,13 +131,6 @@ export type ReferenceProject = {
   title: string;
   description?: string;
   projects?: ProjectsReference;
-};
-
-export type ServicesReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "services";
 };
 
 export type HomeServices = {
@@ -105,13 +187,6 @@ export type Contacts = {
   emergencyNumber?: string;
 };
 
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
-
 export type Company = {
   _type: "company";
   name: string;
@@ -144,22 +219,6 @@ export type IconPicker = {
   provider?: string;
   name?: string;
   svg?: string;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
 };
 
 export type EmployeesSection = {
@@ -398,21 +457,23 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | Contact
+  | ServicesReference
+  | SanityImageAssetReference
+  | Footer
+  | SanityImageCrop
+  | SanityImageHotspot
   | CtaSection
   | FaqItem
   | ProjectsReference
   | ReferenceProject
-  | ServicesReference
   | HomeServices
   | Faq
   | Benefits
   | Contacts
-  | SanityImageAssetReference
   | Company
   | SiteSettings
   | IconPicker
-  | SanityImageCrop
-  | SanityImageHotspot
   | EmployeesSection
   | AboutContent
   | About_page
@@ -432,6 +493,58 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: ../my-app/src/sanity/footerQuery.ts
+// Variable: FOOTER_QUERY
+// Query: *[_type == "footer"][0]{      ...,      column1{        ...,        links[]->{ _id, service_title, "slug": slug.current }      },    "contact": *[_type == "contact"][0]{      _key, phone, email, city, address, zip    }       }
+export type FOOTER_QUERY_RESULT = {
+  _id: string;
+  _type: "footer";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  column1: {
+    columnTitle?: string;
+    links: Array<{
+      _id: string;
+      service_title: string;
+      slug: string | null;
+    }> | null;
+  } | null;
+  column2?: {
+    columnTitle?: string;
+    links?: Array<{
+      label?: "address" | "city" | "email" | "phone" | "zip";
+      _type: "link";
+      _key: string;
+    }>;
+  };
+  column3?: {
+    columnTitle?: string;
+    links?: Array<{
+      label?: "about" | "contact" | "services";
+      _type: "link";
+      _key: string;
+    }>;
+  };
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  footer_text?: string;
+  trustText?: string;
+  contact: {
+    _key: null;
+    phone: string | null;
+    email: string | null;
+    city: string | null;
+    address: string | null;
+    zip: string | null;
+  } | null;
+} | null;
 
 // Source: ../my-app/src/sanity/homeQuery.ts
 // Variable: HOME_DATA
@@ -597,6 +710,7 @@ export type EMPLOYEES_QUERY_RESULT = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    ' *[_type == "footer"][0]{\n      ...,\n      column1{\n        ...,\n        links[]->{ _id, service_title, "slug": slug.current }\n      },\n    "contact": *[_type == "contact"][0]{\n      _key, phone, email, city, address, zip\n    }   \n    }\n  ': FOOTER_QUERY_RESULT;
     '\n  *[_type == "home_page"][0]{\n    ...,\n    homeProject{..., projects->},\n    homeServices{..., services[]->}\n  }\n': HOME_DATA_RESULT;
     '*[_type == "services"]': SERVICES_QUERY_RESULT;
     ' *[_type == "servicesPage"][0]{hero, services}': SERVICEPAGE_QUERY_RESULT;

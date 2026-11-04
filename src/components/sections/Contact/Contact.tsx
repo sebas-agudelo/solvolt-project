@@ -5,14 +5,12 @@ import { SectionWrapper } from "../SectionWrapper";
 import { DownCurveShape } from "@/components/UI/Shapes/Shapes";
 import { Links } from "@/components/UI/Link";
 
-type contactProps = {
+type ContactProps = {
     contact?: Contacts
     openHours?: Company["openHours"]
 }
 
-export const Contact = ({ contact, openHours }: contactProps) => {
-    console.log("Contact: ", contact);
-
+export const Contact = ({ contact, openHours }: ContactProps) => {
     return (
         <SectionWrapper
             wrapperClass="bg-neutral-50"

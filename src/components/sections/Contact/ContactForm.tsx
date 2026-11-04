@@ -36,42 +36,31 @@ export const ContactForm = () => {
 
             </div>
 
-<div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
 
-            <div className="w-full mb-6">
-                <label className="text-black text-[15px]" htmlFor="">Telefonnummer</label>
-                <input
-                    className="border border-black/50 rounded-md w-full py-2 px-3"
-                    id="phone"
-                    type="text"
-                    name="phone"
-                    // placeholder="Telefonnummer"
-                    required
-                />
-            </div>
+                <div className="w-full mb-6">
+                    <label className="text-black text-[15px]" htmlFor="">Telefonnummer</label>
+                    <input
+                        className="border border-black/50 rounded-md w-full py-2 px-3"
+                        id="phone"
+                        type="text"
+                        name="phone"
+                        // placeholder="Telefonnummer"
+                        required
+                    />
+                </div>
 
-            <div className="w-full mb-6">
-                <label className="text-black text-[15px] block" htmlFor="">E-post</label>
-                <input
-                    className="border border-black/50 rounded-md text-cyan-950 w-full py-2 px-3"
-                    id="email"
-                    type="text"
-                    name="email"
+                <div className="w-full mb-6">
+                    <label className="text-black text-[15px] block" htmlFor="">E-post</label>
+                    <input
+                        className="border border-black/50 rounded-md text-cyan-950 w-full py-2 px-3"
+                        id="email"
+                        type="text"
+                        name="email"
                     // placeholder="Email"
                     />
+                </div>
             </div>
-                    </div>
-
-{/* 
-            <div className="w-full mb-8">
-                <label className="text-black text-[15px]" htmlFor="">Vad kan vi hjälpa dig med?</label>
-                <select
-                    className="border border-black/50 h-full w-full text-cyan-950 rounded-md py-2"
-                    name="" id="">
-                    <option value="">Välj tjänst</option>
-                    <option value="">Installera laddboxar</option>
-                </select>
-            </div> */}
 
             <div className="h-[125px] w-full mb-10">
                 <label className="text-black text-[15px]" htmlFor="">Meddelande</label>
@@ -91,7 +80,7 @@ export const ContactForm = () => {
 
             </div>
 
-           <PrimaryButton text="Skicka"/>
+            <PrimaryButton text="Skicka" />
         </form>
     )
 }

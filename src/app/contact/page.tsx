@@ -1,22 +1,16 @@
-import { Index } from "../components/ContactComponents/Index";
-import Footer from "../../components/sections/Footer/Footer";
-import { SanityDocument } from "next-sanity";
-import { client } from "../../sanity/client";
 import { Hero } from "@/components/sections/Hero";
+import { getSiteSettings } from "@/sanity/siteSettingsQuery";
+import { Contact } from "@/components/sections/Contact/Contact";
 
-export default async function Contact() {
-    const CONTACT_QUERY = `
-    *[_type == "contact"][0]`;
-    const contact = await client.fetch(CONTACT_QUERY);
-    console.log("COntact: ", contact);
+
+export default async function Contacts() {
+    const contact = await getSiteSettings();
 
     return (
-        <div className="max-w-[1440px] m-auto">
-            {/* <h1>Kontakta oss</h1> */}
-            <Hero h={80}/>
+        <div className="">
+            <Hero h={80} />
 
-            {/* <Index contact={contact}/> */}
-            <Footer />
+            <Contact contact={contact?.contact} />
         </div>
     )
 }

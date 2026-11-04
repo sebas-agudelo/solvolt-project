@@ -64,8 +64,10 @@ export const NavBarLayout = () => {
                     <li className={desktopLinkClass}>
                         <Link href="/about">Om oss</Link>
                     </li>
-                    <li className={desktopLinkClass}>Kundservice</li>
-                    <li className={desktopLinkClass}>Nyheter</li>
+                    <li className={desktopLinkClass}>
+                        <Link href="/contact">Kundservice</Link>
+                    </li>
+                   
                 </ul>
             </div>
 
