@@ -33,18 +33,18 @@ export const FooterColumns = ({ footer }: { footer: FOOTER_QUERY_RESULT }) => {
                         {footer?.column1?.columnTitle}
                     </h3>
                     <ul className="space-y-3">
-                        {services?.map((service) => (
+                        {services.map((service) => (
                             <li key={service?.slug}>
                                 {
                                     service?.slug ? (
                                         <Link
-                                            href={service?.slug}
+                                            href={service.slug}
                                             className="text-sm text-white transition"
                                         >
-                                            {service?.service_title}
+                                            {service.service_title}
                                         </Link>
                                     ) : (
-                                        <span>{service?.service_title}</span>
+                                        <span>{service.service_title}</span>
                                     )
                                 }
                             </li>
@@ -60,7 +60,7 @@ export const FooterColumns = ({ footer }: { footer: FOOTER_QUERY_RESULT }) => {
                         {footer?.column2?.columnTitle}
                     </h3>
                     <ul className="space-y-3">
-                        {contacts?.map((item) => {
+                        {contacts.map((item) => {
                             const href = item.key && item.value ? getHref(item.key, item.value) : undefined;
 
                             return (
@@ -86,14 +86,14 @@ export const FooterColumns = ({ footer }: { footer: FOOTER_QUERY_RESULT }) => {
                         {footer?.column3?.columnTitle}
                     </h3>
                     <ul className="space-y-3">
-                        {navLinks?.map((link) => (
+                        {navLinks.map((link) => (
                             <li key={link?.slug}
                             className="text-sm text-white"
                             >
                                 {
                                     link?.slug ? (
                                         <Link
-                                            href={link?.slug}
+                                            href={link.slug}
                                         >
                                             {link?.title}
                                         </Link>

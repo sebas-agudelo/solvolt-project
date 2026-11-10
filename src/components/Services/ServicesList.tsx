@@ -17,7 +17,7 @@ export const ServicesList = ({ servives, columns }: servicesListProps) => {
             {
                 servives?.map((service) => (
                     <div
-                        key={service?._id}
+                        key={service._id}
                         className={columnsClasses[columns]}>
                         <ServiceCard service={service} />
                     </div>

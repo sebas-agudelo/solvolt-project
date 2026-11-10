@@ -1,8 +1,8 @@
 import servicesQuery from "@/sanity/servicesQuery";
 import { Servicess } from "@/app/services/components/Services";
-import { Hero } from "@/components/sections/Hero";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { getSiteSettings } from "@/sanity/siteSettingsQuery";
+import { Hero } from "@/components/sections/Hero/Hero";
 
 export default async function Services() {
     const servicesPage = await servicesQuery.servicesPage();

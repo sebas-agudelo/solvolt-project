@@ -8,7 +8,7 @@ type homeServicesProps = {
     homeServices?: NonNullable<HOME_DATA_RESULT>["homeServices"]
 }
 
-export const Services = ({ homeServices }: homeServicesProps) => {
+export const HomeServices = ({ homeServices }: homeServicesProps) => {
     return (
         <SectionWrapper label="Favorittjänster">
             <DownCurveShape color="#fff" />
@@ -26,15 +26,20 @@ export const Services = ({ homeServices }: homeServicesProps) => {
                         )}
                     </div>
 
-                    <ul className="flex flex-col gap-6 pl-4 text-sm">
-                        {
-                            homeServices?.usps?.map((adv, index) => (
-                                <li
-                                    key={index}
-                                    className="text-cyan-950 font-medium list-disc">{adv}</li>
-                            ))
-                        }
-                    </ul>
+                    {
+                        homeServices?.usps && homeServices?.usps?.length > 0 && (
+                            <ul className="flex flex-col gap-6 pl-4 text-sm">
+                                {
+
+                                    homeServices.usps.map((adv, index) => (
+                                        <li
+                                            key={index}
+                                            className="text-cyan-950 font-medium list-disc">{adv}</li>
+                                    ))
+                                }
+                            </ul>
+                        )
+                    }
 
                     <div className="hidden md:block mt-4">
                         <Links

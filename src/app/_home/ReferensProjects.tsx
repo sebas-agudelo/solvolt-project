@@ -21,8 +21,8 @@ export const ReferensProjects = ({ homeProject }: referensProjectProps) => {
                 {homeProject?.projects?.project_image &&
                     <div className="w-full md:w-[58%] h-[235px] md:h-[465px] overflow-hidden bg-black rounded-2xl">
                         <img className="w-full h-full object-cover  rounded-2xl"
-                            src={urlFor(homeProject?.projects?.project_image)?.url()}
-                            alt={homeProject?.projects?.project_title}
+                            src={urlFor(homeProject.projects.project_image)?.url()}
+                            alt={homeProject.projects.project_title}
                         />
                     </div>
                 }

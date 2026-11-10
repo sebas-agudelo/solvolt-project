@@ -2,9 +2,9 @@
 
 import { DownCurveShape } from "@/components/UI/Shapes/Shapes"
 import { urlFor } from "@/lib/urlFor"
-import { PrimaryButton, SecondaryButton } from "../UI/Buttons"
 import { usePathname } from "next/navigation"
 import { Hero as HeroTypes } from "@/sanity/types"
+import { PrimaryButton, SecondaryButton } from "@/components/UI/Buttons"
 
 export const Hero = ({ data, h, telephone }: { data?: HeroTypes | null; h: number; telephone?: string }) => {
     const path = usePathname();
@@ -14,7 +14,6 @@ export const Hero = ({ data, h, telephone }: { data?: HeroTypes | null; h: numbe
             style={{ minHeight: `${h}vh` }}
             className="bg-cyan-950 overflow-hidden relative flex flex-col justify-center py-20 lg:py-28"
         >
-            {/* Bakgrundsbild med mjuk gradient överlägg för bra kontrast */}
             <div className="h-full w-full absolute inset-0 z-0">
                 {data?.image && (
                     <img
@@ -26,12 +25,10 @@ export const Hero = ({ data, h, telephone }: { data?: HeroTypes | null; h: numbe
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-950 via-cyan-950/80 to-transparent" />
             </div>
 
-            {/* Huvudinnehåll */}
             <div className="container mx-auto px-4 lg:px-12 z-10">
                 <div className="flex flex-col justify-between w-full max-w-[850px] gap-8">
                     <div className="flex flex-col gap-4">
 
-                        {/* Rubrik och beskrivning */}
                         <div className="flex flex-col gap-4">
                             <h1 className="text-[42px] sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] tracking-tight text-balance">
                                 {data?.heading}
@@ -42,7 +39,6 @@ export const Hero = ({ data, h, telephone }: { data?: HeroTypes | null; h: numbe
                         </div>
                     </div>
 
-                    {/* Knapp-sektion: items-start gör att knapparna inte sträcks ut på mobil */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                         {data?.primaryButton && (
                             <PrimaryButton
@@ -60,7 +56,6 @@ export const Hero = ({ data, h, telephone }: { data?: HeroTypes | null; h: numbe
                 </div>
             </div>
 
-            {/* Bottenform om det är startsidan */}
             {path === "/" && (
                 <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
                     <DownCurveShape color="#fff" />

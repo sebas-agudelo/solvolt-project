@@ -2,7 +2,6 @@ import { Company, Contacts } from "@/sanity/types"
 import { ContactDetails } from "./ContactDetails"
 import { ContactForm } from "./ContactForm";
 import { SectionWrapper } from "../SectionWrapper";
-import { DownCurveShape } from "@/components/UI/Shapes/Shapes";
 import { Links } from "@/components/UI/Link";
 
 type ContactProps = {
@@ -22,6 +21,7 @@ export const Contact = ({ contact, openHours }: ContactProps) => {
                         <h2 className="heading-lg">{contact?.contact_title}</h2>
                         <p>{contact?.contact_text}</p>
                     </div>
+                    
                     <ContactDetails contact={contact} openHours={openHours} />
 
                     <div className='flex flex-col items-start gap-2 border-l-[3px] border-amber-300 text-balance px-4'>

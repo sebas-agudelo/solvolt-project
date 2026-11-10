@@ -1,11 +1,11 @@
 import { Benefits } from "@/components/sections/Benefits/Benefits";
 import { ReferensProjects } from "@/app/_home/ReferensProjects";
 import { FAQ } from "../components/sections/FAQ/FAQ";
-import { Hero } from "@/components/sections/Hero";
 import getHomeData from "@/sanity/homeQuery";
-import { Services } from "./_home/Services";
+import { HomeServices } from "./_home/HomeServices";
 import { getSiteSettings } from "@/sanity/siteSettingsQuery";
 import { Contact } from "@/components/sections/Contact/Contact";
+import { Hero } from "@/components/sections/Hero/Hero";
 
 
 export default async function Home() {
@@ -20,20 +20,16 @@ export default async function Home() {
         telephone={siteSettings?.contact?.phone}
       />
 
-      <Services
+      <HomeServices
         homeServices={home?.homeServices}
       />
 
-      {
-        siteSettings?.benefits?.benefits_array && siteSettings?.benefits?.benefits_array?.length > 0 && (
-          <Benefits />
-        )
-      }
+      <Benefits />
 
       {
-        home?.homeProject?.projects && (
+        home?.homeProject && home?.homeProject?.projects && (
           <ReferensProjects
-            homeProject={home?.homeProject}
+            homeProject={home.homeProject}
           />
         )
       }
