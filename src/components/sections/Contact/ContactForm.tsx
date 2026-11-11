@@ -1,8 +1,21 @@
+"use client";
+
 import { PrimaryButton } from "@/components/UI/Buttons"
+import { useActionState } from "react"
+import { submitForm } from "@/actions/submitForm"
 
 export const ContactForm = () => {
+    const [state, action, pending] = useActionState(submitForm, null)
     return (
-        <form className="">
+        <form className="" action={action}>
+
+            {state?.ok === false && (
+                <p className="text-red-600 mb-6 " role="alert">{state.error}</p>
+            )}
+            {state?.ok && (
+                <p className="text-green-700 mb-6" role="status">Tack! Vi kontaktar dig snart.</p>
+            )}
+
             <div className="flex flex-col gap-2 md:flex-row mb-6">
                 <div className="w-full md:w-1/2">
 
@@ -12,7 +25,7 @@ export const ContactForm = () => {
                         id="firstname"
                         type="text"
                         name="firstname"
-                        required
+                    // required
                     />
 
                 </div>
@@ -25,7 +38,7 @@ export const ContactForm = () => {
                         id="lastname"
                         type="text"
                         name="lastname"
-                        required
+                    // required
                     />
 
                 </div>
@@ -42,7 +55,7 @@ export const ContactForm = () => {
                         id="phone"
                         type="tel"
                         name="phone"
-                        required
+                    // required
                     />
                 </div>
 
@@ -63,13 +76,14 @@ export const ContactForm = () => {
                     className="border border-black/50 h-full w-full text-cyan-950 rounded-md"
                     id="message"
                     name="message"
-                    required
+                // required
                 >
                 </textarea>
             </div>
 
+
             <div className="flex items-center mb-8">
-                <input id="chbx" className="" type="checkbox" />
+                <input id="chbx" className="" type="checkbox" required />
                 <label htmlFor="chbx" className=" ml-2 text-sm">Jag godkänner behandling av mina uppgifter.</label>
 
             </div>

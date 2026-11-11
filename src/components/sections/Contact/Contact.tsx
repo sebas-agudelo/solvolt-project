@@ -15,7 +15,7 @@ export const Contact = ({ contact, openHours }: ContactProps) => {
             wrapperClass="bg-neutral-50"
             sectionClass="pt-15 lg:pt-18"
             label="Kontakta oss">
-            <div className="flex flex-col md:flex-row gap-8 md:gap-0">
+            <div className="flex flex-col md:flex-row items-start gap-8 md:gap-0">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-2">
                         <h2 className="heading-lg">{contact?.contact_title}</h2>

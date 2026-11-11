@@ -1,7 +1,4 @@
-"use client";
-
 import { HiOutlineEnvelope, HiOutlinePhone, HiOutlineClock, HiOutlineMapPin } from "react-icons/hi2"
-import { usePathname } from "next/navigation";
 import { ContactDetailItem } from "./ContactDetailItem";
 import { Company, Contacts } from "@/sanity/types";
 
@@ -12,9 +9,6 @@ type ContactDetailProps = {
 
 export const ContactDetails = ({ contact, openHours }: ContactDetailProps) => {
     const iconsStyle = "text-2xl text-cyan-950";
-
-    const pathname = usePathname();
-    const isContactPage = pathname === "/contact";
 
     return (
         <div className="flex flex-col items-start gap-8">
@@ -36,40 +30,35 @@ export const ContactDetails = ({ contact, openHours }: ContactDetailProps) => {
                 />
             )}
 
-            {
-                isContactPage && (
-                    <>
-                        {contact?.address && (
-                            <ContactDetailItem
-                                title="Adress"
-                                text={
-                                    <>
-                                        {contact.address},
-                                        <br />
-                                        {contact?.zip} {contact?.city}
-                                    </>
-                                }
-                                icon={<HiOutlineMapPin className={iconsStyle} />}
-                            />
-                        )}
 
-                        {openHours && openHours?.length > 0 && (
-                            <ContactDetailItem
-                                title="Öppettider"
-                                text={<>
-                                    {openHours.map((hour, index) => (
-                                        <span key={index}>
-                                            {hour}
-                                            <br />
-                                        </span>
-                                    ))}
-                                </>}
-                                icon={<HiOutlineClock className={iconsStyle} />}
-                            />
-                        )}
-                    </>
-                )
-            }
+            {contact?.address && (
+                <ContactDetailItem
+                    title="Adress"
+                    text={
+                        <>
+                            {contact.address},
+                            <br />
+                            {contact?.zip} {contact?.city}
+                        </>
+                    }
+                    icon={<HiOutlineMapPin className={iconsStyle} />}
+                />
+            )}
+
+            {openHours && openHours?.length > 0 && (
+                <ContactDetailItem
+                    title="Öppettider"
+                    text={<>
+                        {openHours.map((hour, index) => (
+                            <span key={index}>
+                                {hour}
+                                <br />
+                            </span>
+                        ))}
+                    </>}
+                    icon={<HiOutlineClock className={iconsStyle} />}
+                />
+            )}
         </div>
     )
 }

@@ -12,6 +12,8 @@ export default async function Home() {
   const home = await getHomeData()
   const siteSettings = await getSiteSettings()
 
+  console.log("home", home)
+
   return (
     <div className="relative">
       <Hero

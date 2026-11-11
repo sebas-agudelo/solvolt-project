@@ -38,7 +38,7 @@ export const FooterColumns = ({ footer }: { footer: FOOTER_QUERY_RESULT }) => {
                                 {
                                     service?.slug ? (
                                         <Link
-                                            href={service.slug}
+                                            href={""}
                                             className="text-sm text-white transition"
                                         >
                                             {service.service_title}
