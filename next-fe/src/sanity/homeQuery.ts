@@ -9,7 +9,7 @@ const HOME_DATA = defineQuery(`
   }
 `);
 export default async function getHomeData() {
-  return await client.fetch(HOME_DATA, {}, { next: { tags: ["sanity"] } });
+  return await client.fetch(HOME_DATA, {}, { next: { revalidate: 10 } });
 }
 
 
