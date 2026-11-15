@@ -1,0 +1,94 @@
+"use client";
+
+import { PrimaryButton } from "@/components/UI/Buttons"
+import { useActionState } from "react"
+import { submitForm } from "@/actions/submitForm"
+
+export const ContactForm = () => {
+    const [state, action, pending] = useActionState(submitForm, null)
+    return (
+        <form className="" action={action}>
+
+            {state?.ok === false && (
+                <p className="text-red-600 mb-6 " role="alert">{state.error}</p>
+            )}
+            {state?.ok && (
+                <p className="text-green-700 mb-6" role="status">Tack! Vi kontaktar dig snart.</p>
+            )}
+
+            <div className="flex flex-col gap-2 md:flex-row mb-6">
+                <div className="w-full md:w-1/2">
+
+                    <label className="text-black text-[15px]" htmlFor="firstname">Förnamn</label>
+                    <input
+                        className="border border-black/50 rounded-md w-full py-2 px-3"
+                        id="firstname"
+                        type="text"
+                        name="firstname"
+                    // required
+                    />
+
+                </div>
+
+                <div className="w-full md:w-1/2">
+
+                    <label className="text-black text-[15px]" htmlFor="lastname">Efternamn</label>
+                    <input
+                        className="border border-black/50 rounded-md w-full py-2 px-3"
+                        id="lastname"
+                        type="text"
+                        name="lastname"
+                    // required
+                    />
+
+                </div>
+
+
+            </div>
+
+            <div className="flex flex-col gap-2">
+
+                <div className="w-full mb-6">
+                    <label className="text-black text-[15px]" htmlFor="phone">Telefonnummer</label>
+                    <input
+                        className="border border-black/50 rounded-md w-full py-2 px-3"
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                    // required
+                    />
+                </div>
+
+                <div className="w-full mb-6">
+                    <label className="text-black text-[15px] block" htmlFor="email">E-post</label>
+                    <input
+                        className="border border-black/50 rounded-md text-cyan-950 w-full py-2 px-3"
+                        id="email"
+                        type="email"
+                        name="email"
+                    />
+                </div>
+            </div>
+
+            <div className="h-[125px] w-full mb-10">
+                <label className="text-black text-[15px]" htmlFor="message">Meddelande</label>
+                <textarea
+                    className="border border-black/50 h-full w-full text-cyan-950 rounded-md"
+                    id="message"
+                    name="message"
+                // required
+                >
+                </textarea>
+            </div>
+
+
+            <div className="flex items-center mb-8">
+                <input id="chbx" className="" type="checkbox" required />
+                <label htmlFor="chbx" className=" ml-2 text-sm">Jag godkänner behandling av mina uppgifter.</label>
+
+            </div>
+
+            <PrimaryButton text="Skicka" />
+        </form>
+    )
+}
