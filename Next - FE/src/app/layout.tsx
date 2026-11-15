@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-// @ts-expect-error Next.js loads global CSS as a side effect; no module declaration is required.
 import "./globals.css";
 import { NavBar } from "@/components/Nav/NavBar";
 import Footer from "../components/sections/Footer/Footer";
