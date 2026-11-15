@@ -11,7 +11,6 @@ interface SectionWrapperProps {
 }
 
 export const SectionWrapper = ({ children, sectionClass = "", wrapperClass = "", label = "", labelColor="" }: SectionWrapperProps) => {
-    console.log("wrapper: ",wrapperClass)
     return (
         <div className={twMerge("relative z-40", wrapperClass)}>
             <div className={twMerge(
