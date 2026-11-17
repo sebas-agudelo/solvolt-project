@@ -55,8 +55,6 @@ export const SecondaryButton = ({
             className={`${base} ${color || "bg-white"}  lg:hover:bg-cyan-950 lg:hover:text-white`}
         >
             <span>{text}</span>
-            {/* <FaArrowUpRightFromSquare className="group-hover:hidden transition-all duration-150 text-xs"/> */}
-
             <HoverArrow />
         </Link>
     );

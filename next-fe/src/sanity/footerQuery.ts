@@ -15,7 +15,7 @@ const FOOTER_QUERY = defineQuery(` *[_type == "footer"][0]{
 )
 
 export const getFooterData = async () => {
-  return await client.fetch(FOOTER_QUERY)
+  return await client.fetch(FOOTER_QUERY, {}, { next: { revalidate: 10 } })
 }
 
 

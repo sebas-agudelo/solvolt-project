@@ -3,7 +3,7 @@ import { client } from "./client";
 
 const SERVICES_QUERY = defineQuery(`*[_type == "services"]`);
 const services = async () => {
-    return await client.fetch(SERVICES_QUERY)
+    return await client.fetch(SERVICES_QUERY, {}, { next: { revalidate: 10 } })
 }
 
 async function servicePage(slug: string) {
@@ -16,7 +16,7 @@ async function servicePage(slug: string) {
 
 const SERVICEPAGE_QUERY = defineQuery(` *[_type == "servicesPage"][0]{hero, services}`)
 const servicesPage = async () => {
-    return await client.fetch(SERVICEPAGE_QUERY)
+    return await client.fetch(SERVICEPAGE_QUERY, {}, { next: { revalidate: 10 } })
 }
 
 export default { services, servicePage, servicesPage };
