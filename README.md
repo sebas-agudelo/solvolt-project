@@ -1,4 +1,4 @@
-# SolVolt – Webbplats för elfirm
+# SolVolt – Webbplats för elfirma
 
 En modern, snabb och responsiv webbplats. Sidan presenterar företagets tjänster, referensprojekt och låter besökare skicka offertförfrågningar direkt via ett kontaktformulär. Allt innehåll hanteras av företaget självt via Sanity Studio, utan att koden behöver ändras.
 
