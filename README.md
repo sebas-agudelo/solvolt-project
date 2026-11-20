@@ -35,7 +35,7 @@ https://volt-lilac-xi.vercel.app/
 
 ### Miljövariabler
 
-Skapa en `.env.local` i projektets rot:
+Skapa en `.env` i projektets rot:
 
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=ditt_projekt_id
