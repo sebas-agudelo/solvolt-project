@@ -5,7 +5,7 @@ En modern, snabb och responsiv webbplats. Sidan presenterar företagets tjänste
 https://volt-lilac-xi.vercel.app/
 
 <img width="2518" height="1246" alt="Skärmbild 2026-11-20 223300" src="https://github.com/user-attachments/assets/0d94f189-19e0-4824-89a9-82b2bf1b295a" />
-<img width="2520" height="1262" alt="Skärmbild 2026-11-20 223313" src="https://github.com/user-attachments/assets/f239e139-ba60-40ec-a041-b3711dda0833" />
+<img width="2524" height="1250" alt="Skärmbild 2026-11-20 223752" src="https://github.com/user-attachments/assets/71ab9ea4-b7d9-442e-abd8-db57653a0872" />
 <img width="2520" height="1262" alt="Skärmbild 2026-11-20 223330" src="https://github.com/user-attachments/assets/68ec99c7-d9f7-490a-ad64-43e3c38e6a0a" />
 <img width="2528" height="1248" alt="Skärmbild 2026-11-20 223348" src="https://github.com/user-attachments/assets/4deb6404-9750-4eff-a208-3445ed147a7a" />
 <img width="2524" height="1276" alt="Skärmbild 2026-11-20 223613" src="https://github.com/user-attachments/assets/b458dda9-adfb-4ce1-82ef-36296d3d973f" />
